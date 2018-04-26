@@ -1,0 +1,32 @@
+<div class="card">
+  <div class="card-header">
+    <div class="row">
+      <div class="col-md-9">
+          <span>Manage Products</span>
+      </div>
+      <div class="col-md-3">
+          <button type="button" class="btn btn-link" (click)="openAddProductModal()">+ Add</button>
+      </div>
+    </div>
+  </div>
+  <div class="card-body">
+      <table class="table table-striped table-dark">
+          <thead>
+            <tr>
+              <th scope="col">Product</th>
+              <th scope="col">Price</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let product of productLists" (click)="selectedProduct(product)">
+              <td>{{ product.name }}</td>
+              <td>{{ product.price | currency }}</td>
+              <td>
+                  <button type="button" class="btn btn-danger" (click)="this.productService.remove(product.name+product.description)">Remove</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+  </div>
+</div>

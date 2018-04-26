@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="modal-header">
+      <div class="row">
+          <div class="col-md-3">
+              <button type="button" class="btn btn-block" (click)="setActiveTab('customer')"  [ngClass]="(orderService.activeTab === 'customer') ? 'btn-success' : 'btn-outline-success'">Customer Info</button>
+          </div>
+          <div class="col-md-3">
+              <button type="button" class="btn btn-block" (click)="setActiveTab('bill')"  [ngClass]="(orderService.activeTab === 'bill') ? 'btn-success' : 'btn-outline-success'">Billing Address</button>
+          </div>
+          <div class="col-md-3">
+              <button type="button" class="btn btn-block" (click)="setActiveTab('payment')"  [ngClass]="(orderService.activeTab === 'payment') ? 'btn-success' : 'btn-outline-success'">Payment Info</button>
+          </div>
+          <div class="col-md-3">
+              <button type="button" class="btn btn-block" (click)="setActiveTab('review')"  [ngClass]="(orderService.activeTab === 'review') ? 'btn-success' : 'btn-outline-success'">Review</button>
+          </div>
+        </div>
+  </div>
+  <div class="modal-body">
+    <customer-info-component *ngIf="orderService.activeTab === 'customer'"></customer-info-component>
+    <billing-address-component *ngIf="orderService.activeTab === 'bill'"></billing-address-component>
+    <payment-info-component *ngIf="orderService.activeTab === 'payment'"></payment-info-component>
+    <review-component *ngIf="orderService.activeTab === 'review'"></review-component>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-danger" (click)="bsModalRef.hide()"><< Back</button>
+  </div>
+</div>
+
+

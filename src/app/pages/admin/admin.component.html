@@ -1,0 +1,31 @@
+<div class="card">
+    <div class="card-header">
+        <span>Admin Panel</span>
+    </div>
+    <br />
+    <div class="admin-tab">
+      <nav>
+          <div class="row">
+            <div class="col-md-6">
+                <button type="button" class="btn btn-block"  [ngClass]="(toggleNav === 'products') ? 'btn-success' : 'btn-outline-success'" (click)="changeNav('products')" >Products</button>
+            </div>
+            <div class="col-md-6">
+                <button type="button" class="btn btn-block"  [ngClass]="(toggleNav === 'orders') ? 'btn-success' : 'btn-outline-success'" (click)="changeNav('orders')" >Orders</button>
+            </div>
+          </div>
+      </nav>
+    </div>
+    <div class="card-body">
+      
+        <div id="product-tab" *ngIf="toggleNav === 'products'">
+            <admin-product-component></admin-product-component>
+            <br />
+            <product-detail-component></product-detail-component>
+        </div>
+
+        <div id="order-tab" *ngIf="toggleNav === 'orders'">
+            <order-component></order-component>
+        </div> <!-- end of order tab -->
+        
+    </div>
+  </div>

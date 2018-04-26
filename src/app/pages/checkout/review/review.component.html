@@ -1,0 +1,133 @@
+<div class="card">
+  <h5 class="card-header">Customer Information</h5>
+  <div class="card-body">
+      <div class="container">
+        <div class="row">
+          <div class="col">Name:</div>
+          <div class="col">{{ customer.firstname }} {{ customer.lastname }}</div>
+        </div>
+        <div class="row">
+          <div class="col">Gender:</div>
+          <div class="col">{{ customer.gender }}</div>
+        </div>
+        <div class="row">
+          <div class="col">Email:</div>
+          <div class="col">{{ customer.email }}</div>
+        </div>
+      </div>
+  </div>
+</div>
+<br />
+<div class="card">
+  <h5 class="card-header">Shipping Address</h5>
+  <div class="card-body">
+      <div class="container">
+        <div class="row">
+          <div class="col">Address 1:</div>
+          <div class="col">{{ bill.address1 }}</div>
+        </div>
+        <div class="row">
+          <div class="col">Address 2:</div>
+          <div class="col">{{ bill.address2 }}</div>
+        </div>
+        <div class="row">
+          <div class="col">Country:</div>
+          <div class="col">{{ bill.country }}</div>
+        </div>
+        <div class="row">
+          <div class="col">Zipcode:</div>
+          <div class="col">{{ bill.zipcode }}</div>
+        </div>
+      </div>
+  </div>
+</div>
+<br />
+<div class="card">
+  <h5 class="card-header">Payment Information</h5>
+  <div class="card-body">
+      <div class="container">
+        <div class="row">
+          <div class="col">Payment Type:</div>
+          <div class="col">{{ payment.paymentType }}</div>
+        </div>
+        <div class="row">
+          <div class="col">Card Type:</div>
+          <div class="col">{{ payment.cardType }}</div>
+        </div>
+        <div class="row">
+          <div class="col">Name on Card:</div>
+          <div class="col">{{ payment.nameOnCard }}</div>
+        </div>
+        <div class="row">
+          <div class="col">Card No:</div>
+          <div class="col">{{ payment.cardNo }}</div>
+        </div>
+        <div class="row">
+          <div class="col">Card Expiration:</div>
+          <div class="col">{{ payment.cardExpMonth + " " + payment.cardExpDay + ", " + payment.cardExpYear  }}</div>
+        </div>
+        <div class="row">
+            <div class="col">Card CVV:</div>
+            <div class="col">{{ payment.cardCvv }}</div>
+          </div>
+      </div>
+  </div>
+</div>
+<br />
+<div class="card">
+  <h5 class="card-header">Order Details</h5>
+  <div class="card-body">
+      <div class="row">
+          <table class="table table-striped table-dark">
+          <thead>
+            <tr>
+              <th scope="col">Product</th>
+              <th scope="col">Image</th>
+              <th scope="col">Price</th>
+              <th scope="col">Quantity</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let orderItem of orderItems">
+              <td>{{ orderItem.name }}</td>
+              <td>Image here</td>
+              <td>{{ orderItem.price | currency }}</td>
+              <td>{{ orderItem.qty }}</td>
+            </tr>
+            <tr>
+              <td colspan="4">&nbsp;</td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>Sub Total:</td>
+              <td>{{ subTotal | currency}}</td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>Tax:</td>
+              <td>{{ tax | currency}}</td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>Shipping Fee:</td>
+              <td>{{ shippingFee | currency}}</td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>Total Amount:</td>
+              <td>{{ totalAmount | currency}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+  </div>
+  <br />
+  <button type="button" (click)="saveOrder()" class="btn btn-success">Place Order</button>
+</div>
+
+
+

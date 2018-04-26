@@ -1,0 +1,23 @@
+<div class="card">
+  <div class="card-header">
+    <span>Settings</span>
+  </div>
+  <div class="card-body">
+    <form class="form-horizontal" [formGroup]="settingFormGroup">
+      <div class="form-group">
+        <label>Background Color:</label>
+        <select (change)="saveSettings()" class="form-control" formControlName="themeBackgroundColor">
+          <option value="White">Default</option>
+          <option>Red</option>
+          <option>Blue</option>
+          <option>Green</option>
+        </select>
+
+        <div *ngIf="settingFormGroup.controls.themeBackgroundColor.invalid 
+                && (settingFormGroup.controls.themeBackgroundColor.dirty 
+                || settingFormGroup.controls.themeBackgroundColor.touched)" class="alert alert-danger">Theme color is required.
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

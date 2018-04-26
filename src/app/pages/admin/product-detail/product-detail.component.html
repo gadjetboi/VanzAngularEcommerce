@@ -1,0 +1,17 @@
+<div class="card">
+  <div class="card-header">
+      <span>Product Detail</span>
+  </div>
+  <div *ngIf="!isSelected">
+    <p>There's no selected product.</p>
+  </div>
+  <div class="card-body" *ngIf="isSelected">
+      <div class="card">
+        <img class="card-img-top" src="{{ productDetail.imgUrl }}">
+        <div class="card-body">
+          <h5 class="card-title">{{ productDetail.name }}</h5>
+          <p class="card-text">Price: {{ productDetail.price | currency }}</p>
+        </div>
+      </div>
+  </div>
+</div>
