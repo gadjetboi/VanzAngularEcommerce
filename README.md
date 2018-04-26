@@ -1,6 +1,6 @@
 # VanzAngularEcommerce
 
-Simple E-commerce built in AngularJS
+Simple E-commerce built in AngularJS 4 and Redux
 
 ## Website URL
 
