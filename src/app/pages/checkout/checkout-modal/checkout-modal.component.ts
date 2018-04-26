@@ -11,7 +11,7 @@ export class CheckoutModalComponent implements OnInit {
   toggleNav: string;
   
   constructor(public bsModalRef: BsModalRef,
-              private orderService: OrderService) { 
+              public orderService: OrderService) { 
 
     this.orderService.createNewInstance();
     this.orderService.setFees();
