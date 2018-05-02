@@ -14,7 +14,10 @@ export class CartService {
   @Output()
   cartChanged = new EventEmitter<Array<CartModel>>();
 
-  constructor(private store: NgRedux<IAppState>) { 
+  constructor(
+      private store: NgRedux<IAppState>,
+      private toastyMessageService: ToastyMessageService) 
+  { 
     
   }
 
@@ -26,12 +29,17 @@ export class CartService {
       this.incrementCartQty(cartIndex);
 
       this.store.dispatch({type: UPDATE_CART, payload: { carts: this.carts } }); //TODO: move to action. create a function addToCart in action and trigger dispatch
+      
+      this.toastyMessageService.showMessage('', product.name + " increment qty to 1.", 'success'); //TODO: move type to common
+
       return;
     }
     
     let cartModel = new CartModel(product, qty);
     this.carts.push(cartModel);
     this.store.dispatch({type: ADD_TO_CART, payload: { carts: this.carts } });
+
+    this.toastyMessageService.showMessage('', product.name + " added to cart.", 'success'); //TODO: move type to common
   }
 
   private getCartIndex(product: ProductModel): number {
@@ -54,6 +62,8 @@ export class CartService {
     });
 
     this.store.dispatch({type: REMOVE_FROM_CART, payload: { carts: this.carts }});
+
+    this.toastyMessageService.showMessage('', "Removed from cart.", 'success'); //TODO: move type to common
   }
 
   getSubTotal() : number {

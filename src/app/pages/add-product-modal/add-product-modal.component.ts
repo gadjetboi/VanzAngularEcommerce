@@ -53,6 +53,6 @@ export class AddProductModalComponent implements OnInit {
 
     this.productService.saveProduct(newProduct);
 
-    this.toastyMessageService.showMessage('', 'Added New Product', 'success'); //TODO: move to common
+    this.bsModalRef.hide();
   }
 }

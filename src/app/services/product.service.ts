@@ -6,6 +6,7 @@ import 'rxjs/add/observable/of';
 import { NgRedux } from '@angular-redux/store';
 import { IAppState } from '../interfaces/app-state';
 import { ADD_PRODUCT, REMOVE_PRODUCT } from '../redux/actions/action';
+import { ToastyMessageService } from './toasty.service';
 
 @Injectable()
 export class ProductService {
@@ -15,7 +16,10 @@ export class ProductService {
   @Output()
   productSelected = new EventEmitter<ProductModel>();
   
-  constructor(private store: NgRedux<IAppState>) { 
+  constructor(
+      private store: NgRedux<IAppState>,
+      private toastyMessageService: ToastyMessageService) 
+  { 
     this.addDefaultProducts();
   }
 
@@ -32,6 +36,8 @@ export class ProductService {
     this.products.push(product);
 
     this.store.dispatch({type: ADD_PRODUCT, payload: { products: this.products }});
+
+    this.toastyMessageService.showMessage('', product.name + ' added successfully.', 'success'); //TODO: move to common
   }
 
   getProducts<T>() : Observable<T> {
@@ -70,6 +76,8 @@ export class ProductService {
     });
 
     this.store.dispatch({type: REMOVE_PRODUCT, payload: { products: this.products }});
+
+    this.toastyMessageService.showMessage('', 'Removed from products.', 'success'); //TODO: move to common
   }
 
   private createResponse<T>(body, status: number) {
