@@ -9,6 +9,8 @@ import { CartModel } from '../../../models/cart.model';
 import { CartService } from '../../../services/cart.service';
 import { NgRedux } from '@angular-redux/store';
 import { IAppState } from '../../../interfaces/app-state';
+import { BsModalRef } from 'ngx-bootstrap/modal';
+import { ToastyMessageService } from '../../../services/toasty.service';
 
 @Component({
   selector: 'review-component',
@@ -28,7 +30,9 @@ export class ReviewComponent implements OnInit {
 
   constructor(private orderService: OrderService,
               private cartService: CartService,
-              private store: NgRedux<IAppState>) { 
+              private store: NgRedux<IAppState>,
+              public bsModalRef: BsModalRef,
+              private toastyMessageService: ToastyMessageService) { 
 
     this.orderItems = this.orderService.order.orderItems;
     this.subTotal = this.orderService.order.subTotal;
@@ -47,5 +51,7 @@ export class ReviewComponent implements OnInit {
   saveOrder() {
     this.orderService.save();
     this.cartService.clearCarts();
+    this.bsModalRef.hide();
+    this.toastyMessageService.showMessage('', "We are now processing your order.", 'success'); //TODO: move type to common
   }
 }
