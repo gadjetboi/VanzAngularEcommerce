@@ -23,7 +23,7 @@
               <img class="card-img-top" src="{{ product.imgUrl }}">
               <div class="card-body">
                 <h5 class="card-title">{{ product.name }}</h5>
-                <p class="card-text">Price: {{ product.price | currency }}</p>
+                <p class="card-text">Price: {{ product.price | currency:'USD':'code' }}</p>
               </div>
               <div class="card-body">
                   <button type="button" class="btn btn-success" (click)="cartService.add(product, 1)">Add to Cart</button>

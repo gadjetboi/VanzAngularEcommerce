@@ -21,7 +21,7 @@
           <tbody>
             <tr *ngFor="let product of productLists" (click)="selectedProduct(product)">
               <td>{{ product.name }}</td>
-              <td>{{ product.price | currency }}</td>
+              <td>{{ product.price | currency:'USD':'code' }}</td>
               <td>
                   <button type="button" class="btn btn-danger" (click)="this.productService.remove(product.name+product.description)">Remove</button>
               </td>

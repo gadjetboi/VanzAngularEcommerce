@@ -90,32 +90,32 @@
                     <tr *ngFor="let orderItem of orderItems">
                       <td>{{ orderItem.name }}</td>
                       <td>Image here</td>
-                      <td>{{ orderItem.price | currency }}</td>
+                      <td>{{ orderItem.price | currency:'USD':'code' }}</td>
                       <td>{{ orderItem.qty }}</td>
                     </tr>
                     <tr>
                       <td>&nbsp;</td>
                       <td>&nbsp;</td>
                       <td>Sub Total:</td>
-                      <td>{{ subTotal | currency}}</td>
+                      <td>{{ subTotal | currency:'USD':'code'}}</td>
                     </tr>
                     <tr>
                       <td>&nbsp;</td>
                       <td>&nbsp;</td>
                       <td>Tax:</td>
-                      <td>{{ tax | currency}}</td>
+                      <td>{{ tax | currency:'USD':'code' }}</td>
                     </tr>
                     <tr>
                       <td>&nbsp;</td>
                       <td>&nbsp;</td>
                       <td>Shipping Fee:</td>
-                      <td>{{ shippingFee | currency}}</td>
+                      <td>{{ shippingFee | currency:'USD':'code'}}</td>
                     </tr>
                     <tr>
                       <td>&nbsp;</td>
                       <td>&nbsp;</td>
                       <td>Total Amount:</td>
-                      <td>{{ totalAmount | currency}}</td>
+                      <td>{{ totalAmount | currency:'USD':'code' }}</td>
                     </tr>
                   </tbody>
                 </table>

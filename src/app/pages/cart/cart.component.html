@@ -21,7 +21,7 @@
             <tbody>
               <tr *ngFor="let cart of carts">
                 <td>{{ cart.name }}</td>
-                <td>{{ cart.price | currency }}</td>
+                <td>{{ cart.price | currency:'USD':'code' }}</td>
                 <td>{{ cart.qty }}</td>
                 <td>
                   <button type="button" class="btn btn-danger" (click)="cartService.remove(cart.name+cart.description)">Remove</button>
@@ -31,7 +31,7 @@
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>
                 <td>Sub Total:</td>
-                <td>{{ subTotal | currency}}</td>
+                <td>{{ subTotal | currency:'USD':'code' }}</td>
             </tbody>
           </table>
       </div>
