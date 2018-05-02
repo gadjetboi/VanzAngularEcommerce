@@ -613,18 +613,18 @@ var AddProductModalComponent = (function () {
         this.bsModalRef = bsModalRef;
         this.productService = productService;
         this.toastyMessageService = toastyMessageService;
-        this.productForm = new __WEBPACK_IMPORTED_MODULE_2__angular_forms__["b" /* FormGroup */]({
-            productName: new __WEBPACK_IMPORTED_MODULE_2__angular_forms__["c" /* FormControl */]('', [
-                __WEBPACK_IMPORTED_MODULE_2__angular_forms__["d" /* Validators */].required
+        this.productForm = new __WEBPACK_IMPORTED_MODULE_2__angular_forms__["d" /* FormGroup */]({
+            productName: new __WEBPACK_IMPORTED_MODULE_2__angular_forms__["b" /* FormControl */]('', [
+                __WEBPACK_IMPORTED_MODULE_2__angular_forms__["c" /* Validators */].required
             ]),
-            productDescription: new __WEBPACK_IMPORTED_MODULE_2__angular_forms__["c" /* FormControl */]('', [
-                __WEBPACK_IMPORTED_MODULE_2__angular_forms__["d" /* Validators */].required
+            productDescription: new __WEBPACK_IMPORTED_MODULE_2__angular_forms__["b" /* FormControl */]('', [
+                __WEBPACK_IMPORTED_MODULE_2__angular_forms__["c" /* Validators */].required
             ]),
-            productPrice: new __WEBPACK_IMPORTED_MODULE_2__angular_forms__["c" /* FormControl */]('', [
-                __WEBPACK_IMPORTED_MODULE_2__angular_forms__["d" /* Validators */].required
+            productPrice: new __WEBPACK_IMPORTED_MODULE_2__angular_forms__["b" /* FormControl */]('', [
+                __WEBPACK_IMPORTED_MODULE_2__angular_forms__["c" /* Validators */].required
             ]),
-            productImageUrl: new __WEBPACK_IMPORTED_MODULE_2__angular_forms__["c" /* FormControl */]('', [
-                __WEBPACK_IMPORTED_MODULE_2__angular_forms__["d" /* Validators */].required
+            productImageUrl: new __WEBPACK_IMPORTED_MODULE_2__angular_forms__["b" /* FormControl */]('', [
+                __WEBPACK_IMPORTED_MODULE_2__angular_forms__["c" /* Validators */].required
             ])
         });
     }
@@ -1205,7 +1205,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/pages/checkout/billing-address/billing-address.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<form class=\"form-horizontal\" [formGroup]=\"billForm\">\n    <div class=\"form-group\">\n      <label>Address 1:</label>\n      <input type=\"text\" class=\"form-control\" placeholder=\"Enter Address 1\" formControlName=\"address1\">\n      \n      <div *ngIf=\"billForm.controls.address1.invalid \n                && (billForm.controls.address1.dirty \n                || billForm.controls.address1.touched)\" class=\"alert alert-danger\">Address 1 is required.\n      </div>\n    </div>\n\n    <div class=\"form-group\">\n      <label>Address 2:</label>\n      <input type=\"text\" class=\"form-control\" placeholder=\"Enter Address 2\" formControlName=\"address2\">        \n    </div>\n\n    <div class=\"form-group\">\n      <label>Country:</label>\n      <select class=\"form-control\" formControlName=\"country\">\n        <option>United States</option>\n        <option>Singapore</option>\n        <option>Philippines</option>\n        <option>India</option>\n      </select>\n      \n      <div *ngIf=\"billForm.controls.country.invalid \n                && (billForm.controls.country.dirty \n                || billForm.controls.country.touched)\" class=\"alert alert-danger\">Country is required.\n      </div>\n    </div>\n\n    <div class=\"form-group\">\n      <label>Zipcode:</label>\n      <input type=\"text\" class=\"form-control\" placeholder=\"Enter Zip Code\" formControlName=\"zipcode\">\n      \n      <div *ngIf=\"billForm.controls.zipcode.invalid \n                && (billForm.controls.zipcode.dirty \n                || billForm.controls.zipcode.touched)\" class=\"alert alert-danger\">Zipcode is required.\n      </div>\n    </div>\n\n    <button type=\"button\" (click)=\"save()\" class=\"btn btn-success\">Save & Next</button>\n  </form>\n"
+module.exports = "<form class=\"form-horizontal\" [formGroup]=\"billForm\">\n    <div class=\"form-group\">\n      <label>Address 1:</label>\n      <input type=\"text\" class=\"form-control\" placeholder=\"Enter Address 1\" formControlName=\"address1\">\n      \n      <div *ngIf=\"address1.invalid \n                && (address1.dirty \n                || address1.touched)\" class=\"alert alert-danger\">Address 1 is required.\n      </div>\n    </div>\n\n    <div class=\"form-group\">\n      <label>Address 2:</label>\n      <input type=\"text\" class=\"form-control\" placeholder=\"Enter Address 2\" formControlName=\"address2\">        \n    </div>\n\n    <div class=\"form-group\">\n      <label>Country:</label>\n      <select class=\"form-control\" formControlName=\"country\">\n        <option>United States</option>\n        <option>Singapore</option>\n        <option>Philippines</option>\n        <option>India</option>\n      </select>\n      \n      <div *ngIf=\"country.invalid \n                && (country.dirty \n                || country.touched)\" class=\"alert alert-danger\">Country is required.\n      </div>\n    </div>\n\n    <div class=\"form-group\">\n      <label>Zipcode:</label>\n      <input type=\"text\" class=\"form-control\" placeholder=\"Enter Zip Code\" formControlName=\"zipcode\">\n      \n      <div *ngIf=\"zipcode.invalid \n                && (zipcode.dirty \n                || zipcode.touched)\" class=\"alert alert-danger\">Zipcode is required.\n      </div>\n    </div>\n\n    <button type=\"button\" (click)=\"save()\" class=\"btn btn-success\">Save & Next</button>\n  </form>\n"
 
 /***/ }),
 
@@ -1237,21 +1237,31 @@ var BillingAddressComponent = (function () {
     function BillingAddressComponent(orderService, toastyMessageService) {
         this.orderService = orderService;
         this.toastyMessageService = toastyMessageService;
-        this.billForm = new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormGroup */]({
-            address1: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["c" /* FormControl */]('', [
-                __WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* Validators */].required
-            ]),
-            address2: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["c" /* FormControl */]('', []),
-            country: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["c" /* FormControl */]('', [
-                __WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* Validators */].required
-            ]),
-            zipcode: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["c" /* FormControl */]('', [
-                __WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* Validators */].required
-            ])
-        });
+        this.createFormControls();
+        this.createForm();
         this.setFormData();
     }
     BillingAddressComponent.prototype.ngOnInit = function () {
+    };
+    BillingAddressComponent.prototype.createFormControls = function () {
+        this.address1 = new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormControl */]('', [
+            __WEBPACK_IMPORTED_MODULE_1__angular_forms__["c" /* Validators */].required
+        ]);
+        this.address2 = new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormControl */]('', []);
+        this.country = new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormControl */]('', [
+            __WEBPACK_IMPORTED_MODULE_1__angular_forms__["c" /* Validators */].required
+        ]);
+        this.zipcode = new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormControl */]('', [
+            __WEBPACK_IMPORTED_MODULE_1__angular_forms__["c" /* Validators */].required
+        ]);
+    };
+    BillingAddressComponent.prototype.createForm = function () {
+        this.billForm = new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* FormGroup */]({
+            address1: this.address1,
+            address2: this.address2,
+            country: this.country,
+            zipcode: this.zipcode
+        });
     };
     BillingAddressComponent.prototype.setFormData = function () {
         if (this.orderService.isTabNavigatable('bill')) {
@@ -1390,7 +1400,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/pages/checkout/customer-info/customer-info.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<form class=\"form-horizontal\" [formGroup]=\"customerInfoForm\">\n    <div class=\"form-group\">\n      <label>First Name:</label>\n      <input type=\"text\" class=\"form-control\" placeholder=\"Enter First Name\" formControlName=\"firstname\">\n      \n      <div *ngIf=\"customerInfoForm.controls.firstname.invalid \n                && (customerInfoForm.controls.firstname.dirty \n                || customerInfoForm.controls.firstname.touched)\" class=\"alert alert-danger\">First Name is required.\n      </div>\n    </div>\n\n    <div class=\"form-group\">\n      <label>Last Name:</label>\n      <input type=\"text\" class=\"form-control\" placeholder=\"Enter Last Name\" formControlName=\"lastname\">\n      \n      <div *ngIf=\"customerInfoForm.controls.lastname.invalid \n                && (customerInfoForm.controls.lastname.dirty \n                || customerInfoForm.controls.lastname.touched)\" class=\"alert alert-danger\">Last Name is required.\n      </div>\n    </div>\n\n    <div class=\"form-group\">\n      <label>Gender:</label>\n      <select class=\"form-control\" formControlName=\"gender\">\n          <option>Male</option>\n          <option>Female</option>\n      </select>\n      \n      <div *ngIf=\"customerInfoForm.controls.gender.invalid \n                && (customerInfoForm.controls.gender.dirty \n                || customerInfoForm.controls.gender.touched)\" class=\"alert alert-danger\">Gender is required.\n      </div>\n    </div>\n\n    <div class=\"form-group\">\n      <label>Email:</label>\n      <input type=\"text\" class=\"form-control\" placeholder=\"Enter Email\" formControlName=\"email\">\n      \n      <div *ngIf=\"customerInfoForm.controls.email.invalid \n                && (customerInfoForm.controls.email.dirty \n                || customerInfoForm.controls.email.touched)\" class=\"alert alert-danger\">Invalid Email.\n      </div>\n    </div>\n\n    <button type=\"button\" (click)=\"save()\" class=\"btn btn-success\">Save & Next</button>\n  </form>\n"
+module.exports = "<form class=\"form-horizontal\" [formGroup]=\"customerInfoForm\">\n    <div class=\"form-group\">\n      <label>First Name:</label>\n      <input type=\"text\" class=\"form-control\" placeholder=\"Enter First Name\" formControlName=\"firstname\">\n      \n      <div *ngIf=\"firstname.invalid \n                && (firstname.dirty \n                || firstname.touched)\" class=\"alert alert-danger\">First Name is required.\n      </div>\n    </div>\n\n    <div class=\"form-group\">\n      <label>Last Name:</label>\n      <input type=\"text\" class=\"form-control\" placeholder=\"Enter Last Name\" formControlName=\"lastname\">\n      \n      <div *ngIf=\"lastname.invalid \n                && (lastname.dirty \n                || lastname.touched)\" class=\"alert alert-danger\">Last Name is required.\n      </div>\n    </div>\n\n    <div class=\"form-group\">\n      <label>Gender:</label>\n      <select class=\"form-control\" formControlName=\"gender\">\n          <option>Male</option>\n          <option>Female</option>\n      </select>\n      \n      <div *ngIf=\"gender.invalid \n                && (gender.dirty \n                || gender.touched)\" class=\"alert alert-danger\">Gender is required.\n      </div>\n    </div>\n\n    <div class=\"form-group\">\n      <label>Email:</label>\n      <input type=\"text\" class=\"form-control\" placeholder=\"Enter Email\" formControlName=\"email\">\n      \n      <div *ngIf=\"email.errors \n                && (email.dirty \n                || email.touched)\">\n        <div *ngIf=\"email.errors.required\" class=\"alert alert-danger\">Email is required.</div>        \n        <div *ngIf=\"email.errors.pattern\" class=\"alert alert-danger\">Invalid Email.</div>\n      </div>\n    </div>\n\n    <button type=\"button\" (click)=\"save()\" class=\"btn btn-success\">Save & Next</button>\n  </form>\n"
 
 /***/ }),
 
@@ -1422,23 +1432,34 @@ var CustomerInfoComponent = (function () {
     function CustomerInfoComponent(orderService, toastyMessageService) {
         this.orderService = orderService;
         this.toastyMessageService = toastyMessageService;
-        this.customerInfoForm = new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormGroup */]({
-            firstname: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["c" /* FormControl */]('', [
-                __WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* Validators */].required
-            ]),
-            lastname: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["c" /* FormControl */]('', [
-                __WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* Validators */].required
-            ]),
-            gender: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["c" /* FormControl */]('', [
-                __WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* Validators */].required
-            ]),
-            email: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["c" /* FormControl */]('', [
-                __WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* Validators */].email
-            ])
-        });
+        this.createFormControls();
+        this.createForm();
         this.setFormData();
     }
     CustomerInfoComponent.prototype.ngOnInit = function () {
+    };
+    CustomerInfoComponent.prototype.createFormControls = function () {
+        this.firstname = new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormControl */]('', [
+            __WEBPACK_IMPORTED_MODULE_1__angular_forms__["c" /* Validators */].required
+        ]);
+        this.lastname = new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormControl */]('', [
+            __WEBPACK_IMPORTED_MODULE_1__angular_forms__["c" /* Validators */].required
+        ]);
+        this.gender = new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormControl */]('', [
+            __WEBPACK_IMPORTED_MODULE_1__angular_forms__["c" /* Validators */].required
+        ]);
+        this.email = new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormControl */]('', [
+            __WEBPACK_IMPORTED_MODULE_1__angular_forms__["c" /* Validators */].required,
+            __WEBPACK_IMPORTED_MODULE_1__angular_forms__["c" /* Validators */].pattern("[^ @]*@[^ @]*")
+        ]);
+    };
+    CustomerInfoComponent.prototype.createForm = function () {
+        this.customerInfoForm = new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* FormGroup */]({
+            firstname: this.firstname,
+            lastname: this.lastname,
+            gender: this.gender,
+            email: this.email
+        });
     };
     CustomerInfoComponent.prototype.setFormData = function () {
         if (this.orderService.isTabNavigatable('customer')) {
@@ -1500,7 +1521,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/pages/checkout/payment-info/payment-info.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<form class=\"form-horizontal\" [formGroup]=\"paymentForm\">\n    <div class=\"form-group\">\n      <label>Payment Type:</label>\n      \n      <select class=\"form-control\" formControlName=\"paymentType\">\n        <option>Cash</option>\n        <option>Credit Card</option>\n      </select>\n      \n      <div *ngIf=\"paymentForm.controls.paymentType.invalid \n                && (paymentForm.controls.paymentType.dirty \n                || paymentForm.controls.paymentType.touched)\" class=\"alert alert-danger\">Payment Type is required.\n      </div>\n    </div>\n\n    <div class=\"form-group\">\n      <label>Card Type:</label>\n      <select class=\"form-control\" formControlName=\"cardType\">\n        <option>Visa</option>\n        <option>Master Card</option>\n      </select>\n      \n      <div *ngIf=\"paymentForm.controls.cardType.invalid \n                && (paymentForm.controls.cardType.dirty \n                || paymentForm.controls.cardType.touched)\" class=\"alert alert-danger\">Card Type is required.\n      </div>\n    </div>\n\n    <div class=\"form-group\">\n      <label>Name on Card:</label>\n      <input type=\"text\" class=\"form-control\" placeholder=\"Enter Name on Card\" formControlName=\"nameOnCard\">        \n    \n      <div *ngIf=\"paymentForm.controls.nameOnCard.invalid \n            && (paymentForm.controls.nameOnCard.dirty \n            || paymentForm.controls.nameOnCard.touched)\" class=\"alert alert-danger\">Name on Card is required.\n      </div>\n    </div>\n\n    <div class=\"form-group\">\n      <label>Card No:</label>\n      <input type=\"text\" class=\"form-control\" placeholder=\"Enter Card No\" formControlName=\"cardNo\">        \n    \n      <div *ngIf=\"paymentForm.controls.cardNo.invalid \n            && (paymentForm.controls.cardNo.dirty \n            || paymentForm.controls.cardNo.touched)\" class=\"alert alert-danger\">Card No is required.\n      </div>\n    </div>\n\n    <div class=\"form-group\">\n      <label>Card Expiration:</label>\n      \n      <div class=\"input-group\">\n        <select class=\"form-control\" formControlName=\"cardExpMonth\">\n          <option>January</option>\n          <option>February</option>\n        </select>\n        <div *ngIf=\"paymentForm.controls.cardExpMonth.invalid \n                  && (paymentForm.controls.cardExpMonth.dirty \n                  || paymentForm.controls.cardExpMonth.touched)\" class=\"alert alert-danger\">Card Expiration Month is required.\n        </div>\n        <select class=\"form-control\" formControlName=\"cardExpDay\">\n          <option>01</option>\n          <option>02</option>\n        </select>\n        <div *ngIf=\"paymentForm.controls.cardExpDay.invalid \n                  && (paymentForm.controls.cardExpDay.dirty \n                  || paymentForm.controls.cardExpDay.touched)\" class=\"alert alert-danger\">Card Expiration Day is required.\n        </div>\n        <select class=\"form-control\" formControlName=\"cardExpYear\">\n          <option>2018</option>\n          <option>2019</option>\n        </select>\n        <div *ngIf=\"paymentForm.controls.cardExpYear.invalid \n                  && (paymentForm.controls.cardExpYear.dirty \n                  || paymentForm.controls.cardExpYear.touched)\" class=\"alert alert-danger\">Card Expiration Year is required.\n        </div>\n      </div>\n      \n    </div>\n\n    <div class=\"form-group\">\n      <label>Card CVV:</label>\n      <input type=\"text\" class=\"form-control\" placeholder=\"Enter Card CVV\" formControlName=\"cardCvv\">        \n    \n      <div *ngIf=\"paymentForm.controls.cardCvv.invalid \n            && (paymentForm.controls.cardCvv.dirty \n            || paymentForm.controls.cardCvv.touched)\" class=\"alert alert-danger\">Card CVV is required.\n      </div>\n    </div>\n\n    <button type=\"button\" (click)=\"save()\" class=\"btn btn-success\">Save & Next</button>\n  </form>\n"
+module.exports = "<form class=\"form-horizontal\" [formGroup]=\"paymentForm\">\n    <div class=\"form-group\">\n      <label>Payment Type:</label>\n      \n      <select class=\"form-control\" formControlName=\"paymentType\">\n        <option>Cash</option>\n        <option>Credit Card</option>\n      </select>\n      \n      <div *ngIf=\"paymentType.invalid \n                && (paymentType.dirty \n                || paymentType.touched)\" class=\"alert alert-danger\">Payment Type is required.\n      </div>\n    </div>\n\n    <div class=\"form-group\">\n      <label>Card Type:</label>\n      <select class=\"form-control\" formControlName=\"cardType\">\n        <option>Visa</option>\n        <option>Master Card</option>\n      </select>\n      \n      <div *ngIf=\"cardType.invalid \n                && (cardType.dirty \n                || cardType.touched)\" class=\"alert alert-danger\">Card Type is required.\n      </div>\n    </div>\n\n    <div class=\"form-group\">\n      <label>Name on Card:</label>\n      <input type=\"text\" class=\"form-control\" placeholder=\"Enter Name on Card\" formControlName=\"nameOnCard\">        \n    \n      <div *ngIf=\"nameOnCard.invalid \n            && (nameOnCard.dirty \n            || nameOnCard.touched)\" class=\"alert alert-danger\">Name on Card is required.\n      </div>\n    </div>\n\n    <div class=\"form-group\">\n      <label>Card No:</label>\n      <input type=\"text\" class=\"form-control\" placeholder=\"Enter Card No\" formControlName=\"cardNo\">        \n    \n      <div *ngIf=\"cardNo.invalid \n            && (cardNo.dirty \n            || cardNo.touched)\" class=\"alert alert-danger\">Card No is required.\n      </div>\n    </div>\n\n    <div class=\"form-group\">\n      <label>Card Expiration:</label>\n      \n      <div class=\"input-group\">\n        <select class=\"form-control\" formControlName=\"cardExpMonth\">\n          <option>January</option>\n          <option>February</option>\n        </select>\n        <div *ngIf=\"cardExpMonth.invalid \n                  && (cardExpMonth.dirty \n                  || cardExpMonth.touched)\" class=\"alert alert-danger\">Card Expiration Month is required.\n        </div>\n        <select class=\"form-control\" formControlName=\"cardExpDay\">\n          <option>01</option>\n          <option>02</option>\n        </select>\n        <div *ngIf=\"cardExpDay.invalid \n                  && (cardExpDay.dirty \n                  || cardExpDay.touched)\" class=\"alert alert-danger\">Card Expiration Day is required.\n        </div>\n        <select class=\"form-control\" formControlName=\"cardExpYear\">\n          <option>2018</option>\n          <option>2019</option>\n        </select>\n        <div *ngIf=\"cardExpYear.invalid \n                  && (cardExpYear.dirty \n                  || cardExpYear.touched)\" class=\"alert alert-danger\">Card Expiration Year is required.\n        </div>\n      </div>\n      \n    </div>\n\n    <div class=\"form-group\">\n      <label>Card CVV:</label>\n      <input type=\"text\" class=\"form-control\" placeholder=\"Enter Card CVV\" formControlName=\"cardCvv\">        \n    \n      <div *ngIf=\"cardCvv.invalid \n            && (cardCvv.dirty \n            || cardCvv.touched)\" class=\"alert alert-danger\">Card CVV is required.\n      </div>\n    </div>\n\n    <button type=\"button\" (click)=\"save()\" class=\"btn btn-success\">Save & Next</button>\n  </form>\n"
 
 /***/ }),
 
@@ -1532,35 +1553,49 @@ var PaymentInfoComponent = (function () {
     function PaymentInfoComponent(orderService, toastyMessageService) {
         this.orderService = orderService;
         this.toastyMessageService = toastyMessageService;
-        this.paymentForm = new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormGroup */]({
-            paymentType: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["c" /* FormControl */]('', [
-                __WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* Validators */].required
-            ]),
-            cardType: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["c" /* FormControl */]('', [
-                __WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* Validators */].required
-            ]),
-            nameOnCard: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["c" /* FormControl */]('', [
-                __WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* Validators */].required
-            ]),
-            cardNo: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["c" /* FormControl */]('', [
-                __WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* Validators */].required
-            ]),
-            cardExpMonth: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["c" /* FormControl */]('', [
-                __WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* Validators */].required
-            ]),
-            cardExpDay: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["c" /* FormControl */]('', [
-                __WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* Validators */].required
-            ]),
-            cardExpYear: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["c" /* FormControl */]('', [
-                __WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* Validators */].required
-            ]),
-            cardCvv: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["c" /* FormControl */]('', [
-                __WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* Validators */].required
-            ])
-        });
+        this.createFormControls();
+        this.createForm();
         this.setFormData();
     }
     PaymentInfoComponent.prototype.ngOnInit = function () {
+    };
+    PaymentInfoComponent.prototype.createFormControls = function () {
+        this.paymentType = new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormControl */]('', [
+            __WEBPACK_IMPORTED_MODULE_1__angular_forms__["c" /* Validators */].required
+        ]),
+            this.cardType = new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormControl */]('', [
+                __WEBPACK_IMPORTED_MODULE_1__angular_forms__["c" /* Validators */].required
+            ]),
+            this.nameOnCard = new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormControl */]('', [
+                __WEBPACK_IMPORTED_MODULE_1__angular_forms__["c" /* Validators */].required
+            ]),
+            this.cardNo = new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormControl */]('', [
+                __WEBPACK_IMPORTED_MODULE_1__angular_forms__["c" /* Validators */].required
+            ]),
+            this.cardExpMonth = new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormControl */]('', [
+                __WEBPACK_IMPORTED_MODULE_1__angular_forms__["c" /* Validators */].required
+            ]),
+            this.cardExpDay = new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormControl */]('', [
+                __WEBPACK_IMPORTED_MODULE_1__angular_forms__["c" /* Validators */].required
+            ]),
+            this.cardExpYear = new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormControl */]('', [
+                __WEBPACK_IMPORTED_MODULE_1__angular_forms__["c" /* Validators */].required
+            ]),
+            this.cardCvv = new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormControl */]('', [
+                __WEBPACK_IMPORTED_MODULE_1__angular_forms__["c" /* Validators */].required
+            ]);
+    };
+    PaymentInfoComponent.prototype.createForm = function () {
+        this.paymentForm = new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* FormGroup */]({
+            paymentType: this.paymentType,
+            cardType: this.cardType,
+            nameOnCard: this.nameOnCard,
+            cardNo: this.cardNo,
+            cardExpMonth: this.cardExpMonth,
+            cardExpDay: this.cardExpDay,
+            cardExpYear: this.cardExpYear,
+            cardCvv: this.cardCvv
+        });
     };
     PaymentInfoComponent.prototype.setFormData = function () {
         if (this.orderService.isTabNavigatable('payment')) {
@@ -1764,7 +1799,7 @@ var ProductComponent = (function () {
         this.productService = productService;
         this.cartService = cartService;
         this.store = store;
-        this.search = new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["c" /* FormControl */]();
+        this.search = new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormControl */]();
         this.productLists = new Array();
         this.searchResults = new __WEBPACK_IMPORTED_MODULE_9_rxjs_Observable__["Observable"]();
     }
@@ -1860,8 +1895,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var SettingComponent = (function () {
     function SettingComponent(settingService) {
         this.settingService = settingService;
-        this.settingFormGroup = new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormGroup */]({
-            themeBackgroundColor: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["c" /* FormControl */]('', [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* Validators */].required])
+        this.settingFormGroup = new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* FormGroup */]({
+            themeBackgroundColor: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormControl */]('', [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["c" /* Validators */].required])
         });
     }
     SettingComponent.prototype.ngOnInit = function () {
