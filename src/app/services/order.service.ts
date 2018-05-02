@@ -61,6 +61,8 @@ export class OrderService {
     this.orders.push(this.order);
 
     this.store.dispatch({type: 'SAVE_ORDER', payload: {orders: this.orders}});
+
+    this.clearNavigatableTabs();
   }
 
   getOrders() : Array<OrderModel> {
@@ -93,16 +95,7 @@ export class OrderService {
     return (navigatableIndex < 0) ? false : true;
   }
 
-  removeNavigatableTab(tabName: string){
-    let navigatableIndex = this.navigatableTabs.findIndex((navigatableTab: string) => {
-      return tabName === navigatableTab
-    });
-
-    console.log(navigatableIndex);
-    console.log(this.navigatableTabs);
-    if(navigatableIndex < 0) {
-      this.navigatableTabs.splice(navigatableIndex);
-      console.log(this.navigatableTabs);
-    }
+  clearNavigatableTabs() {
+    this.navigatableTabs = new Array<string>();
   }
 }
