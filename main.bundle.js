@@ -637,7 +637,7 @@ var AddProductModalComponent = (function () {
         }
         var newProduct = new __WEBPACK_IMPORTED_MODULE_4__models_product_model__["a" /* ProductModel */](this.productForm.value.productName, this.productForm.value.productDescription, this.productForm.value.productPrice, this.productForm.value.productImageUrl);
         this.productService.saveProduct(newProduct);
-        this.toastyMessageService.showMessage('', 'Added New Product', 'success'); //TODO: move to common
+        this.bsModalRef.hide();
     };
     return AddProductModalComponent;
 }());
@@ -2026,6 +2026,7 @@ function rootReducer(state, action) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_redux_store__ = __webpack_require__("../../../../@angular-redux/store/lib/src/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_redux_store___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__angular_redux_store__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__redux_actions_action__ = __webpack_require__("../../../../../src/app/redux/actions/action.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__toasty_service__ = __webpack_require__("../../../../../src/app/services/toasty.service.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CartService; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -2040,9 +2041,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var CartService = (function () {
-    function CartService(store) {
+    function CartService(store, toastyMessageService) {
         this.store = store;
+        this.toastyMessageService = toastyMessageService;
         this.carts = new Array();
         this.cartChanged = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
     }
@@ -2051,11 +2054,13 @@ var CartService = (function () {
         if (cartIndex >= 0) {
             this.incrementCartQty(cartIndex);
             this.store.dispatch({ type: __WEBPACK_IMPORTED_MODULE_3__redux_actions_action__["b" /* UPDATE_CART */], payload: { carts: this.carts } }); //TODO: move to action. create a function addToCart in action and trigger dispatch
+            this.toastyMessageService.showMessage('', product.name + " increment qty to 1.", 'success'); //TODO: move type to common
             return;
         }
         var cartModel = new __WEBPACK_IMPORTED_MODULE_1__models_cart_model__["a" /* CartModel */](product, qty);
         this.carts.push(cartModel);
         this.store.dispatch({ type: __WEBPACK_IMPORTED_MODULE_3__redux_actions_action__["c" /* ADD_TO_CART */], payload: { carts: this.carts } });
+        this.toastyMessageService.showMessage('', product.name + " added to cart.", 'success'); //TODO: move type to common
     };
     CartService.prototype.getCartIndex = function (product) {
         var cartIndex = this.carts.findIndex(function (cart) {
@@ -2072,6 +2077,7 @@ var CartService = (function () {
             return (tempKey !== key);
         });
         this.store.dispatch({ type: __WEBPACK_IMPORTED_MODULE_3__redux_actions_action__["d" /* REMOVE_FROM_CART */], payload: { carts: this.carts } });
+        this.toastyMessageService.showMessage('', "Removed from cart.", 'success'); //TODO: move type to common
     };
     CartService.prototype.getSubTotal = function () {
         var subTotal = 0;
@@ -2092,10 +2098,10 @@ __decorate([
 ], CartService.prototype, "cartChanged", void 0);
 CartService = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__angular_redux_store__["NgRedux"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_redux_store__["NgRedux"]) === "function" && _a || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__angular_redux_store__["NgRedux"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_redux_store__["NgRedux"]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_4__toasty_service__["a" /* ToastyMessageService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__toasty_service__["a" /* ToastyMessageService */]) === "function" && _b || Object])
 ], CartService);
 
-var _a;
+var _a, _b;
 //# sourceMappingURL=cart.service.js.map
 
 /***/ }),
@@ -2221,6 +2227,7 @@ var _a, _b, _c, _d;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_redux_store__ = __webpack_require__("../../../../@angular-redux/store/lib/src/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_redux_store___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__angular_redux_store__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__redux_actions_action__ = __webpack_require__("../../../../../src/app/redux/actions/action.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__toasty_service__ = __webpack_require__("../../../../../src/app/services/toasty.service.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ProductService; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -2238,9 +2245,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var ProductService = (function () {
-    function ProductService(store) {
+    function ProductService(store, toastyMessageService) {
         this.store = store;
+        this.toastyMessageService = toastyMessageService;
         this.products = new Array();
         this.productSelected = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
         this.addDefaultProducts();
@@ -2255,6 +2264,7 @@ var ProductService = (function () {
     ProductService.prototype.saveProduct = function (product) {
         this.products.push(product);
         this.store.dispatch({ type: __WEBPACK_IMPORTED_MODULE_6__redux_actions_action__["e" /* ADD_PRODUCT */], payload: { products: this.products } });
+        this.toastyMessageService.showMessage('', product.name + ' added successfully.', 'success'); //TODO: move to common
     };
     ProductService.prototype.getProducts = function () {
         var response;
@@ -2279,6 +2289,7 @@ var ProductService = (function () {
             return (tempKey !== key);
         });
         this.store.dispatch({ type: __WEBPACK_IMPORTED_MODULE_6__redux_actions_action__["f" /* REMOVE_PRODUCT */], payload: { products: this.products } });
+        this.toastyMessageService.showMessage('', 'Removed from products.', 'success'); //TODO: move to common
     };
     ProductService.prototype.createResponse = function (body, status) {
         return new __WEBPACK_IMPORTED_MODULE_3__angular_common_http__["a" /* HttpResponse */]({ body: body, status: status });
@@ -2291,10 +2302,10 @@ __decorate([
 ], ProductService.prototype, "productSelected", void 0);
 ProductService = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_5__angular_redux_store__["NgRedux"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__angular_redux_store__["NgRedux"]) === "function" && _a || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_5__angular_redux_store__["NgRedux"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__angular_redux_store__["NgRedux"]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_7__toasty_service__["a" /* ToastyMessageService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_7__toasty_service__["a" /* ToastyMessageService */]) === "function" && _b || Object])
 ], ProductService);
 
-var _a;
+var _a, _b;
 //# sourceMappingURL=product.service.js.map
 
 /***/ }),
