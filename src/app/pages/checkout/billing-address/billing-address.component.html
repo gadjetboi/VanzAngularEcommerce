@@ -3,9 +3,9 @@
       <label>Address 1:</label>
       <input type="text" class="form-control" placeholder="Enter Address 1" formControlName="address1">
       
-      <div *ngIf="billForm.controls.address1.invalid 
-                && (billForm.controls.address1.dirty 
-                || billForm.controls.address1.touched)" class="alert alert-danger">Address 1 is required.
+      <div *ngIf="address1.invalid 
+                && (address1.dirty 
+                || address1.touched)" class="alert alert-danger">Address 1 is required.
       </div>
     </div>
 
@@ -23,9 +23,9 @@
         <option>India</option>
       </select>
       
-      <div *ngIf="billForm.controls.country.invalid 
-                && (billForm.controls.country.dirty 
-                || billForm.controls.country.touched)" class="alert alert-danger">Country is required.
+      <div *ngIf="country.invalid 
+                && (country.dirty 
+                || country.touched)" class="alert alert-danger">Country is required.
       </div>
     </div>
 
@@ -33,9 +33,9 @@
       <label>Zipcode:</label>
       <input type="text" class="form-control" placeholder="Enter Zip Code" formControlName="zipcode">
       
-      <div *ngIf="billForm.controls.zipcode.invalid 
-                && (billForm.controls.zipcode.dirty 
-                || billForm.controls.zipcode.touched)" class="alert alert-danger">Zipcode is required.
+      <div *ngIf="zipcode.invalid 
+                && (zipcode.dirty 
+                || zipcode.touched)" class="alert alert-danger">Zipcode is required.
       </div>
     </div>
 

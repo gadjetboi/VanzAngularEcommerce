@@ -11,24 +11,43 @@ import { ToastyMessageService } from '../../../services/toasty.service';
 })
 export class CustomerInfoComponent implements OnInit {
 
-  customerInfoForm = new FormGroup({
-    firstname: new FormControl('',[
-      Validators.required]),
-    lastname: new FormControl('',[
-      Validators.required]),
-    gender: new FormControl('',[
-      Validators.required]),
-    email: new FormControl('',[
-      Validators.email])
-  });
+  customerInfoForm: FormGroup;
+  firstname: FormControl;
+  lastname: FormControl;
+  gender: FormControl;
+  email: FormControl;
   
   constructor(private orderService: OrderService,
               private toastyMessageService: ToastyMessageService) { 
+      
+      this.createFormControls();
+      this.createForm();
       
       this.setFormData();
   }
 
   ngOnInit() {
+  }
+
+  createFormControls() {
+    this.firstname = new FormControl('',[
+      Validators.required]);
+    this.lastname = new FormControl('',[
+      Validators.required]);
+    this.gender = new FormControl('',[
+      Validators.required]);
+    this.email = new FormControl('',[
+      Validators.required,
+      Validators.pattern("[^ @]*@[^ @]*")]);
+  }
+
+  createForm() {
+    this.customerInfoForm = new FormGroup({
+      firstname: this.firstname,
+      lastname: this.lastname,
+      gender: this.gender,
+      email: this.email
+    });
   }
 
   setFormData() {

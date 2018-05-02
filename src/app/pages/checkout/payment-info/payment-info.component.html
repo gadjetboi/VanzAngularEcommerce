@@ -7,9 +7,9 @@
         <option>Credit Card</option>
       </select>
       
-      <div *ngIf="paymentForm.controls.paymentType.invalid 
-                && (paymentForm.controls.paymentType.dirty 
-                || paymentForm.controls.paymentType.touched)" class="alert alert-danger">Payment Type is required.
+      <div *ngIf="paymentType.invalid 
+                && (paymentType.dirty 
+                || paymentType.touched)" class="alert alert-danger">Payment Type is required.
       </div>
     </div>
 
@@ -20,9 +20,9 @@
         <option>Master Card</option>
       </select>
       
-      <div *ngIf="paymentForm.controls.cardType.invalid 
-                && (paymentForm.controls.cardType.dirty 
-                || paymentForm.controls.cardType.touched)" class="alert alert-danger">Card Type is required.
+      <div *ngIf="cardType.invalid 
+                && (cardType.dirty 
+                || cardType.touched)" class="alert alert-danger">Card Type is required.
       </div>
     </div>
 
@@ -30,9 +30,9 @@
       <label>Name on Card:</label>
       <input type="text" class="form-control" placeholder="Enter Name on Card" formControlName="nameOnCard">        
     
-      <div *ngIf="paymentForm.controls.nameOnCard.invalid 
-            && (paymentForm.controls.nameOnCard.dirty 
-            || paymentForm.controls.nameOnCard.touched)" class="alert alert-danger">Name on Card is required.
+      <div *ngIf="nameOnCard.invalid 
+            && (nameOnCard.dirty 
+            || nameOnCard.touched)" class="alert alert-danger">Name on Card is required.
       </div>
     </div>
 
@@ -40,9 +40,9 @@
       <label>Card No:</label>
       <input type="text" class="form-control" placeholder="Enter Card No" formControlName="cardNo">        
     
-      <div *ngIf="paymentForm.controls.cardNo.invalid 
-            && (paymentForm.controls.cardNo.dirty 
-            || paymentForm.controls.cardNo.touched)" class="alert alert-danger">Card No is required.
+      <div *ngIf="cardNo.invalid 
+            && (cardNo.dirty 
+            || cardNo.touched)" class="alert alert-danger">Card No is required.
       </div>
     </div>
 
@@ -54,25 +54,25 @@
           <option>January</option>
           <option>February</option>
         </select>
-        <div *ngIf="paymentForm.controls.cardExpMonth.invalid 
-                  && (paymentForm.controls.cardExpMonth.dirty 
-                  || paymentForm.controls.cardExpMonth.touched)" class="alert alert-danger">Card Expiration Month is required.
+        <div *ngIf="cardExpMonth.invalid 
+                  && (cardExpMonth.dirty 
+                  || cardExpMonth.touched)" class="alert alert-danger">Card Expiration Month is required.
         </div>
         <select class="form-control" formControlName="cardExpDay">
           <option>01</option>
           <option>02</option>
         </select>
-        <div *ngIf="paymentForm.controls.cardExpDay.invalid 
-                  && (paymentForm.controls.cardExpDay.dirty 
-                  || paymentForm.controls.cardExpDay.touched)" class="alert alert-danger">Card Expiration Day is required.
+        <div *ngIf="cardExpDay.invalid 
+                  && (cardExpDay.dirty 
+                  || cardExpDay.touched)" class="alert alert-danger">Card Expiration Day is required.
         </div>
         <select class="form-control" formControlName="cardExpYear">
           <option>2018</option>
           <option>2019</option>
         </select>
-        <div *ngIf="paymentForm.controls.cardExpYear.invalid 
-                  && (paymentForm.controls.cardExpYear.dirty 
-                  || paymentForm.controls.cardExpYear.touched)" class="alert alert-danger">Card Expiration Year is required.
+        <div *ngIf="cardExpYear.invalid 
+                  && (cardExpYear.dirty 
+                  || cardExpYear.touched)" class="alert alert-danger">Card Expiration Year is required.
         </div>
       </div>
       
@@ -82,9 +82,9 @@
       <label>Card CVV:</label>
       <input type="text" class="form-control" placeholder="Enter Card CVV" formControlName="cardCvv">        
     
-      <div *ngIf="paymentForm.controls.cardCvv.invalid 
-            && (paymentForm.controls.cardCvv.dirty 
-            || paymentForm.controls.cardCvv.touched)" class="alert alert-danger">Card CVV is required.
+      <div *ngIf="cardCvv.invalid 
+            && (cardCvv.dirty 
+            || cardCvv.touched)" class="alert alert-danger">Card CVV is required.
       </div>
     </div>
 

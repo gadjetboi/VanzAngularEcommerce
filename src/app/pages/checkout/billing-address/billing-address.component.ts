@@ -11,24 +11,42 @@ import { ToastyMessageService } from '../../../services/toasty.service';
 })
 export class BillingAddressComponent implements OnInit {
   
-  billForm = new FormGroup({
-    address1: new FormControl('',[
-      Validators.required]),
-    address2: new FormControl('',[]),
-    country: new FormControl('',[
-      Validators.required]),
-    zipcode: new FormControl('',[
-      Validators.required])
-  });
+  billForm: FormGroup;
+  address1: FormControl;
+  address2: FormControl;
+  country: FormControl;
+  zipcode: FormControl;
   
   constructor(private orderService: OrderService,
               private toastyMessageService: ToastyMessageService) { 
+      
+      this.createFormControls();
+      this.createForm();
       
       this.setFormData();
   }
 
   ngOnInit() {
     
+  }
+
+  createFormControls() {
+    this.address1 = new FormControl('', [
+      Validators.required]);
+    this.address2 = new FormControl('', []);
+    this.country = new FormControl('', [
+      Validators.required]);
+    this.zipcode = new FormControl('', [
+      Validators.required]);
+  }
+
+  createForm() {
+    this.billForm = new FormGroup({
+      address1: this.address1,
+      address2: this.address2,
+      country: this.country,
+      zipcode: this.zipcode
+    });
   }
 
   setFormData() {

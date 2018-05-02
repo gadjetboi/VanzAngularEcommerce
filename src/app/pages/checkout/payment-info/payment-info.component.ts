@@ -10,31 +10,58 @@ import { ToastyMessageService } from '../../../services/toasty.service';
   styleUrls: ['./payment-info.component.css']
 })
 export class PaymentInfoComponent implements OnInit {
-  paymentForm = new FormGroup({
-    paymentType: new FormControl('',[
-      Validators.required]),
-    cardType: new FormControl('',[
-      Validators.required]),
-    nameOnCard: new FormControl('',[
-      Validators.required]),
-    cardNo: new FormControl('',[
-      Validators.required]),
-    cardExpMonth: new FormControl('',[
-      Validators.required]),
-    cardExpDay: new FormControl('',[
-      Validators.required]),
-    cardExpYear: new FormControl('',[
-      Validators.required]),
-    cardCvv: new FormControl('',[
-      Validators.required])
-  });
+  paymentForm: FormGroup;
+  paymentType: FormControl;
+  cardType: FormControl;
+  nameOnCard: FormControl;
+  cardNo: FormControl;
+  cardExpMonth: FormControl;
+  cardExpDay: FormControl;
+  cardExpYear: FormControl;
+  cardCvv: FormControl;
+
   constructor(private orderService : OrderService,
               private toastyMessageService: ToastyMessageService) {
   
+     this.createFormControls();
+     this.createForm();
+
      this.setFormData();
   }
 
   ngOnInit() {
+  }
+
+  createFormControls() {
+    this.paymentType = new FormControl('',[
+      Validators.required]),
+    this.cardType = new FormControl('',[
+      Validators.required]),
+    this.nameOnCard = new FormControl('',[
+      Validators.required]),
+    this.cardNo = new FormControl('',[
+      Validators.required]),
+    this.cardExpMonth = new FormControl('',[
+      Validators.required]),
+    this.cardExpDay = new FormControl('',[
+      Validators.required]),
+    this.cardExpYear = new FormControl('',[
+      Validators.required]),
+    this.cardCvv = new FormControl('',[
+      Validators.required])
+  }
+
+  createForm() {
+    this.paymentForm = new FormGroup({
+      paymentType: this.paymentType,
+      cardType: this.cardType,
+      nameOnCard: this.nameOnCard,
+      cardNo: this.cardNo,
+      cardExpMonth: this.cardExpMonth,
+      cardExpDay: this.cardExpDay,
+      cardExpYear: this.cardExpYear,
+      cardCvv: this.cardCvv
+    });
   }
 
   setFormData() {
