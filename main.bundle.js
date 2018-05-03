@@ -234,6 +234,7 @@ var _a;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__services_utility_service__ = __webpack_require__("../../../../../src/app/services/utility.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__services_toasty_service__ = __webpack_require__("../../../../../src/app/services/toasty.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__redux_store__ = __webpack_require__("../../../../../src/app/redux/store.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__pipes_default_image_pipe__ = __webpack_require__("../../../../../src/app/pipes/default-image.pipe.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -247,6 +248,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
  // <-- #1 import module
+
 
 
 
@@ -309,7 +311,8 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_19__pages_checkout_billing_address_billing_address_component__["a" /* BillingAddressComponent */],
             __WEBPACK_IMPORTED_MODULE_20__pages_checkout_payment_info_payment_info_component__["a" /* PaymentInfoComponent */],
             __WEBPACK_IMPORTED_MODULE_21__pages_checkout_review_review_component__["a" /* ReviewComponent */],
-            __WEBPACK_IMPORTED_MODULE_24__pages_admin_order_detail_modal_order_detail_modal_component__["a" /* OrderDetailModalComponent */]
+            __WEBPACK_IMPORTED_MODULE_24__pages_admin_order_detail_modal_order_detail_modal_component__["a" /* OrderDetailModalComponent */],
+            __WEBPACK_IMPORTED_MODULE_33__pipes_default_image_pipe__["a" /* DefaultImagePipe */]
         ],
         imports: [
             __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
@@ -1755,7 +1758,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/pages/product/product.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"card\">\n  <div class=\"card-header\">\n      \n      <div class=\"row\">\n        <div class=\"col-md-6\">\n            <span>Products</span>\n        </div>\n        <div class=\"col-md-6\">\n            <input placeholder=\"Search...\" class=\"form-control\" [formControl]=\"search\">\n        </div>\n      </div>\n    </div>\n    <div class=\"card-body\">\n      <div class=\"text-center\">\n        <p class=\"lead\" *ngIf=\"loading\">Loading...</p>\n      </div>\n      <div class=\"text-center\" *ngIf=\"productLists.length==0\">\n          <p>No record found! Are you kidding me? =)</p>\n      </div>\n      <ul>\n        <li *ngFor=\"let product of productLists\">\n          <div class=\"card\">\n              <img class=\"card-img-top\" src=\"{{ product.imgUrl }}\">\n              <div class=\"card-body\">\n                <h5 class=\"card-title\">{{ product.name }}</h5>\n                <p class=\"card-text\">Price: {{ product.price | currency:'USD':'code' }}</p>\n              </div>\n              <div class=\"card-body\">\n                  <button type=\"button\" class=\"btn btn-success\" (click)=\"cartService.add(product, 1)\">Add to Cart</button>\n              </div>\n            </div>\n        </li>\n      </ul>\n        \n    </div>\n</div>"
+module.exports = "<div class=\"card\">\n  <div class=\"card-header\">\n      \n      <div class=\"row\">\n        <div class=\"col-md-6\">\n            <span>Products</span>\n        </div>\n        <div class=\"col-md-6\">\n            <input placeholder=\"Search...\" class=\"form-control\" [formControl]=\"search\">\n        </div>\n      </div>\n    </div>\n    <div class=\"card-body\">\n      <div class=\"text-center\">\n        <p class=\"lead\" *ngIf=\"loading\">Loading...</p>\n      </div>\n      <div class=\"text-center\" *ngIf=\"productLists.length==0\">\n          <p>No record found! Are you kidding me? =)</p>\n      </div>\n      <ul>\n        <li *ngFor=\"let product of productLists\">\n          <div class=\"card\">\n              <img class=\"card-img-top\" src=\"{{ product.imgUrl | defaultImage }}\">\n              <div class=\"card-body\">\n                <h5 class=\"card-title\">{{ product.name }}</h5>\n                <p class=\"card-text\">Price: {{ product.price | currency:'USD':'code' }}</p>\n              </div>\n              <div class=\"card-body\">\n                  <button type=\"button\" class=\"btn btn-success\" (click)=\"cartService.add(product, 1)\">Add to Cart</button>\n              </div>\n            </div>\n        </li>\n      </ul>\n        \n    </div>\n</div>"
 
 /***/ }),
 
@@ -1931,6 +1934,38 @@ SettingComponent = __decorate([
 
 var _a;
 //# sourceMappingURL=setting.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/pipes/default-image.pipe.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DefaultImagePipe; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+var DefaultImagePipe = (function () {
+    function DefaultImagePipe() {
+    }
+    DefaultImagePipe.prototype.transform = function (value, args) {
+        var defaultImageUrl = 'https://images.apple.com/v/macbook-pro/n/images/overview/compare13_small.jpg';
+        return (value.includes('http://') || value.includes('https://')) ? value : defaultImageUrl;
+    };
+    return DefaultImagePipe;
+}());
+DefaultImagePipe = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Pipe"])({
+        name: 'defaultImage'
+    })
+], DefaultImagePipe);
+
+//# sourceMappingURL=default-image.pipe.js.map
 
 /***/ }),
 
