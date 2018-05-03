@@ -38,6 +38,7 @@ import { ToastyMessageService } from './services/toasty.service';
 
 import { IAppState } from './interfaces/app-state';
 import { rootReducer, INITIAL_STATE }  from './redux/store';
+import { DefaultImagePipe } from './pipes/default-image.pipe';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,8 @@ import { rootReducer, INITIAL_STATE }  from './redux/store';
     BillingAddressComponent,
     PaymentInfoComponent,
     ReviewComponent,
-    OrderDetailModalComponent
+    OrderDetailModalComponent,
+    DefaultImagePipe
   ],
   imports: [
     BrowserModule,

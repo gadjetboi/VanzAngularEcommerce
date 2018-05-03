@@ -20,7 +20,7 @@
       <ul>
         <li *ngFor="let product of productLists">
           <div class="card">
-              <img class="card-img-top" src="{{ product.imgUrl }}">
+              <img class="card-img-top" src="{{ product.imgUrl | defaultImage }}">
               <div class="card-body">
                 <h5 class="card-title">{{ product.name }}</h5>
                 <p class="card-text">Price: {{ product.price | currency:'USD':'code' }}</p>
